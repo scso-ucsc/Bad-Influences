@@ -355,6 +355,7 @@
 "Assets/Managers/AmmoManager.cs"
 "Assets/Managers/PlayerManager.cs"
 "Assets/Scripts/BulletScript.cs"
+"Assets/Scripts/ZombieScript.cs"
 -langversion:9.0
 
 /deterministic
