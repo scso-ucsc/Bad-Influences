@@ -30,7 +30,7 @@ public class ZombieScript : MonoBehaviour
         }
     }
 
-    public static void hurt(){
+    public void hurt(){
         Debug.Log("I am hit");
     }
 }

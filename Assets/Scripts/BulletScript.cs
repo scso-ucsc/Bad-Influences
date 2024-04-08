@@ -9,7 +9,9 @@ public class BulletScript : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resetting velocity to 0 so that if active again, that force no longer applies
             this.gameObject.SetActive(false);
         } else if(collider.gameObject.tag == "Zombie"){
-            //collider.GameObject.hurt();
+            var colliderScript = collider.gameObject.GetComponent<ZombieScript>(); //Accessing Zombie Script of Zombie Object
+            colliderScript.hurt();
+
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero; //Resetting velocity to 0 so that if active again, that force no longer applies
             this.gameObject.SetActive(false);
         }
