@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     {
         transform.Rotate(0, Input.GetAxis("Horizontal") * speedRotation, 0); //Enabling left/right rotation when left-right keys are pressed
 
-        if(Input.GetKeyDown("space")){ //Fire if SPACE is pressed
+        if(Input.GetMouseButtonDown(0)){ //Fire if left-mouse clicked
             AmmoManager.instance.Fire();
         }
     }
