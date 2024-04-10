@@ -7,7 +7,9 @@ public class PlayerManager : MonoBehaviour
     //PlayerManager Variables
     public static PlayerManager instance; //This allows it to be called by other classes using PlayerManager.instance.function()
     private CharacterController controller; //Component on the player
-    [SerializeField] private float speedRotation;
+    private float mouseRotationX = 0f;
+    private float mouseRotationY = 0f;
+    [SerializeField] private float mouseSensitivity = 30f;
 
     // Awake is called upon being created
     void Awake(){
@@ -21,13 +23,16 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speedRotation = 1.0f;
+        mouseRotationX = 0f;
+        mouseRotationY = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * speedRotation, 0); //Enabling left/right rotation when left-right keys are pressed
+        mouseRotationY += Input.GetAxis("Mouse X") * mouseSensitivity; //Rotation based on Mouse; Based on This Tutorial: https://www.youtube.com/watch?v=W70n_bXp7Dc
+        mouseRotationX += Input.GetAxis("Mouse Y") * (-mouseSensitivity);
+        transform.localEulerAngles = new Vector3(mouseRotationX, mouseRotationY, 0);
 
         if(Input.GetMouseButtonDown(0)){ //Fire if left-mouse clicked
             AmmoManager.instance.Fire();
