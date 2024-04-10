@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/BulletScript.cs" />
     <Compile Include="Assets/Managers/AmmoManager.cs" />
+    <Compile Include="Assets/Managers/ZombieManager.cs" />
     <Compile Include="Assets/Scripts/ZombieScript.cs" />
     <Compile Include="Assets/GameManager.cs" />
     <Compile Include="Assets/Managers/PlayerManager.cs" />
