@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     //Game Manager Variables
     public static GameManager instance; //Static enables it to be called anywhere
     private bool isGameOver;
+    private int playerScore;
 
     // Awake is called upon creation, before everything else 
     void Awake(){
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isGameOver = false;
+        playerScore = 0;
     }
 
     // Update is called once per frame
