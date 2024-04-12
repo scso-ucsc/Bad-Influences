@@ -37,6 +37,6 @@ public class UIManager : MonoBehaviour
 
     public void restartGame()
     {
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("SampleScene");
     }
 }
