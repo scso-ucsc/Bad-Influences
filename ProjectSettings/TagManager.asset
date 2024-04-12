@@ -8,6 +8,7 @@ TagManager:
   - Zombie
   - BasicBullet
   - SafeZone
+  - HeadCollider
   layers:
   - Default
   - TransparentFX
