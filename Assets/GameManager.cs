@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //Static enables it to be called anywhere
     private bool isGameOver;
     private int playerScore;
+    private string playerWeapon;
 
     // Awake is called upon creation, before everything else 
     void Awake(){
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         playerScore = 0;
+        playerWeapon = "basic";
     }
 
     // Update is called once per frame
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
     public int getPlayerScore(){
         return playerScore;
     }
-}
 
-//TESTING GIT CHANGE
+    public string getPlayerWeapon(){ //Returning playerWeapon
+        return playerWeapon;
+    }
+}
