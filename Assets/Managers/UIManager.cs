@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject basicGunParticleEmitter;
+    [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
     private ParticleSystem basicGunParticles;
 
     [SerializeField] private TextMeshProUGUI pistolGunText;
@@ -27,6 +28,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        basicGun.SetActive(true);
+        sniperGun.SetActive(false);
+
         sniperGunText.enabled = false;
         laserGunText.enabled = false;
 
@@ -51,6 +55,9 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             GameManager.instance.setPlayerWeapon("basic");
+            basicGun.SetActive(true);
+            sniperGun.SetActive(false);
+            
             pistolGunText.enabled = true;
             sniperGunText.enabled = false;
             laserGunText.enabled  = false;
@@ -58,6 +65,9 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown("2"))
         {
+            basicGun.SetActive(false);
+            sniperGun.SetActive(true);
+            
             GameManager.instance.setPlayerWeapon("sniper");
             sniperGunText.enabled = true;
             pistolGunText.enabled = false;
@@ -66,6 +76,9 @@ public class UIManager : MonoBehaviour
 
         if(Input.GetKeyDown("3"))
         {
+            basicGun.SetActive(false);
+            sniperGun.SetActive(false);
+
             GameManager.instance.setPlayerWeapon("laser");
             sniperGunText.enabled = false;
             pistolGunText.enabled = false;

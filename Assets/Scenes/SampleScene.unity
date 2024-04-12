@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6192,6 +6192,8 @@ MonoBehaviour:
   playerScoreText: {fileID: 835756258}
   gameoverUI: {fileID: 15151823}
   basicGunParticleEmitter: {fileID: 899790717}
+  basicGun: {fileID: 1674498649}
+  sniperGun: {fileID: 2002368980}
   pistolGunText: {fileID: 1397684898}
   sniperGunText: {fileID: 1007258356}
   laserGunText: {fileID: 1914203616}
@@ -6975,6 +6977,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1674498649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123495795002415312, guid: dc17848492e764c8fad38df51352ab6a, type: 3}
+  m_PrefabInstance: {fileID: 6058230910545807177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1870352303
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,6 +7220,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2002368980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7766498214695623614, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+  m_PrefabInstance: {fileID: 7311159300429588831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2002368981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+  m_PrefabInstance: {fileID: 7311159300429588831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027358079
 GameObject:
   m_ObjectHideFlags: 0
@@ -7460,6 +7477,7 @@ Transform:
   - {fileID: 963194228}
   - {fileID: 1373435538}
   - {fileID: 976220646}
+  - {fileID: 2002368981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2104331376
@@ -7513,6 +7531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1123495795002415312, guid: dc17848492e764c8fad38df51352ab6a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6510717123085420343, guid: dc17848492e764c8fad38df51352ab6a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1794703
@@ -7561,6 +7583,67 @@ PrefabInstance:
       addedObject: {fileID: 899790718}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc17848492e764c8fad38df51352ab6a, type: 3}
+--- !u!1001 &7311159300429588831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2104331375}
+    m_Modifications:
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524147639321174809, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766498214695623614, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_Name
+      value: SniperGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766498214695623614, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6ea89e2d110a4572a6e26c2ca395a44, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
