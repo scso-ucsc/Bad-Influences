@@ -10,7 +10,7 @@ public class AmmoManager : MonoBehaviour
     private List<GameObject> sniperBulletList = new List<GameObject>();
     [SerializeField] private GameObject basicBulletObj, sniperBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
     [SerializeField] private Transform basicBulletParent, sniperBulletParent;
-    [SerializeField] private float fireSpeed = 1000;
+    [SerializeField] private float fireSpeed = 2000;
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private Transform playerPosition;
 
