@@ -556,7 +556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enemies Defeated: 0'
+  m_text: 'Enemies Defeated: 0/100'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6157,7 +6157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicBulletObj: {fileID: 7312696843931079941, guid: 9d43436215afe4c3d9beec609b524804, type: 3}
+  sniperBulletObj: {fileID: 8245755284319947461, guid: f6d616f8f4b044568ae1deb1f2b9b996, type: 3}
   basicBulletParent: {fileID: 1513015374}
+  sniperBulletParent: {fileID: 1642188024}
   fireSpeed: 1000
   bulletSpawnpoint: {fileID: 1373435538}
   playerPosition: {fileID: 2104331375}
@@ -6942,6 +6944,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625389255}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1642188023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642188024}
+  m_Layer: 0
+  m_Name: SniperBullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642188024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642188023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.25, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1870352303
 GameObject:
   m_ObjectHideFlags: 0
@@ -7540,6 +7573,7 @@ SceneRoots:
   - {fileID: 903731971}
   - {fileID: 1870352304}
   - {fileID: 1513015374}
+  - {fileID: 1642188024}
   - {fileID: 2046268009}
   - {fileID: 1971991543}
   - {fileID: 15151827}

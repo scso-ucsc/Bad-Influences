@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerScoreText.text = "Enemies Defeated: " + GameManager.instance.getPlayerScore().ToString(); //Updating score constantly
+        playerScoreText.text = "Enemies Defeated: " + GameManager.instance.getPlayerScore().ToString() + "/100"; //Updating score constantly
 
         if(Input.GetMouseButtonDown(0)){ //Activate particles if mouse is pressed
             basicGunParticles.Play(); //Playing Particle Burst

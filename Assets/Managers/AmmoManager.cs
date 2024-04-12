@@ -7,9 +7,10 @@ public class AmmoManager : MonoBehaviour
     //AmmoManager Variables
     public static AmmoManager instance;
     private List<GameObject> basicBulletList = new List<GameObject>();
-    [SerializeField] private GameObject basicBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
-    [SerializeField] private Transform basicBulletParent;
-    [SerializeField] private float fireSpeed = 1000;
+    private List<GameObject> sniperBulletList = new List<GameObject>();
+    [SerializeField] private GameObject basicBulletObj, sniperBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
+    [SerializeField] private Transform basicBulletParent, sniperBulletParent;
+    [SerializeField] private float fireSpeed = 2000;
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private Transform playerPosition;
 
@@ -30,6 +31,13 @@ public class AmmoManager : MonoBehaviour
             GameObject basicBullet = Instantiate(basicBulletObj, spawnPoint, Quaternion.Euler(90, 0, 0), basicBulletParent);
             basicBullet.SetActive(false);
             basicBulletList.Add(basicBullet);
+        }
+
+        for(int i = 0; i < 20; i++){ //Instantiating Sniper Bullets
+            Vector3 spawnPoint = new Vector3(0, 0, 0);
+            GameObject sniperBullet = Instantiate(sniperBulletObj, spawnPoint, Quaternion.Euler(90, 0, 0), sniperBulletParent);
+            sniperBullet.SetActive(false);
+            sniperBulletList.Add(sniperBullet);
         }
     }
 
