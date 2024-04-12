@@ -34,9 +34,10 @@ public class ZombieScript : MonoBehaviour
 
     public void zombieHurt(int damage){
         zombieHealth -= damage;
-        if(zombieHealth <= 0){
-                zombieHealth = 10; //Resetting Health
-                this.gameObject.SetActive(false); //Deactivating Zombie
+        if(zombieHealth <= 0){ //Zombie Death
+            GameManager.instance.increaseScore(); //Increasing Player Score
+            zombieHealth = 10; //Resetting Health
+            this.gameObject.SetActive(false); //Deactivating Zombie
         }
     }
 }

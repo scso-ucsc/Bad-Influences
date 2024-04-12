@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
     public void gameOver(){
         isGameOver = true;
     }
+
+    public void increaseScore(){ //Increasing score
+        playerScore += 1;
+    }
+
+    public int getPlayerScore(){
+        return playerScore;
+    }
 }
 
 //TESTING GIT CHANGE
