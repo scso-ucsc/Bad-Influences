@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject basicGunParticleEmitter;
     private ParticleSystem basicGunParticles;
 
+    [SerializeField] private TextMeshProUGUI pistolGunText;
+    [SerializeField] private TextMeshProUGUI sniperGunText;
+    [SerializeField] private TextMeshProUGUI laserGunText;
+
     void Awake(){
         if(instance == null){
             instance = this;
@@ -23,6 +27,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sniperGunText.enabled = false;
+        laserGunText.enabled = false;
+
         gameoverUI.SetActive(false);
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
     }
@@ -39,6 +46,27 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance.returnGameOverStatus() == true)
         {
             gameoverUI.SetActive(true);
+        }
+
+        if (Input.GetKeyDown("1"))
+        {
+            pistolGunText.enabled = true;
+            sniperGunText.enabled = false;
+            laserGunText.enabled  = false;
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            sniperGunText.enabled = true;
+            pistolGunText.enabled = false;
+            laserGunText.enabled = false;
+        }
+
+        if(Input.GetKeyDown("3"))
+        {
+            sniperGunText.enabled = false;
+            pistolGunText.enabled = false;
+            laserGunText.enabled = true;
         }
     }
 
