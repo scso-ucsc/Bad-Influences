@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown("1"))
         {
+            GameManager.instance.setPlayerWeapon("basic");
             pistolGunText.enabled = true;
             sniperGunText.enabled = false;
             laserGunText.enabled  = false;
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown("2"))
         {
+            GameManager.instance.setPlayerWeapon("sniper");
             sniperGunText.enabled = true;
             pistolGunText.enabled = false;
             laserGunText.enabled = false;
@@ -64,6 +66,7 @@ public class UIManager : MonoBehaviour
 
         if(Input.GetKeyDown("3"))
         {
+            GameManager.instance.setPlayerWeapon("laser");
             sniperGunText.enabled = false;
             pistolGunText.enabled = false;
             laserGunText.enabled = true;

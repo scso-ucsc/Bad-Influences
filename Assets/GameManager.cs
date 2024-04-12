@@ -54,4 +54,8 @@ public class GameManager : MonoBehaviour
     public string getPlayerWeapon(){ //Returning playerWeapon
         return playerWeapon;
     }
+
+    public void setPlayerWeapon(string weapon){ //Assigning weapon variable
+        playerWeapon = weapon;
+    }
 }
