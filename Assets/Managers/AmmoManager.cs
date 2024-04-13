@@ -48,13 +48,25 @@ public class AmmoManager : MonoBehaviour
             chosenBullet.transform.rotation = playerPosition.transform.rotation; //Rotation needs to be reset too
             chosenBullet.SetActive(true);
         }
-        chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fireSpeed);
+        if(GameManager.instance.getPlayerWeapon() == "basic"){
+            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fireSpeed);
+        } else if(GameManager.instance.getPlayerWeapon() == "sniper"){
+            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fireSpeed * 2);
+        }
     }
 
     private GameObject getBullet(){
-        for(int i = 0; i < 20; i++){ //Finding first object in the basicBulletList that isn't active and returning it
-            if(!basicBulletList[i].activeInHierarchy){
-                return basicBulletList[i];
+        if(GameManager.instance.getPlayerWeapon() == "basic"){
+            for(int i = 0; i < 20; i++){ //Finding first object in the basicBulletList that isn't active and returning it
+                if(!basicBulletList[i].activeInHierarchy){
+                    return basicBulletList[i];
+                }
+            }
+        } else if(GameManager.instance.getPlayerWeapon() == "sniper"){ //Finding first object in the sniperBulletList that isn't active and returning it
+            for(int i = 0; i < 20; i++){
+                if(!sniperBulletList[i].activeInHierarchy){
+                    return sniperBulletList[i];
+                }
             }
         }
         return null;

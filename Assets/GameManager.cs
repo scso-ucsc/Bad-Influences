@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //Hello World!
-
     //Game Manager Variables
     public static GameManager instance; //Static enables it to be called anywhere
     private bool isGameOver;
