@@ -10,7 +10,7 @@ public class AmmoManager : MonoBehaviour
     private List<GameObject> sniperBulletList = new List<GameObject>();
     [SerializeField] private GameObject basicBulletObj, sniperBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
     [SerializeField] private Transform basicBulletParent, sniperBulletParent;
-    [SerializeField] private float fireSpeed = 2000;
+    [SerializeField] private float basicFireSpeed = 1500, sniperFireSpeed = 2000;
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private Transform playerPosition;
 
@@ -49,9 +49,9 @@ public class AmmoManager : MonoBehaviour
             chosenBullet.SetActive(true);
         }
         if(GameManager.instance.getPlayerWeapon() == "basic"){
-            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fireSpeed);
+            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * basicFireSpeed);
         } else if(GameManager.instance.getPlayerWeapon() == "sniper"){
-            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fireSpeed * 2);
+            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * sniperFireSpeed);
         }
     }
 

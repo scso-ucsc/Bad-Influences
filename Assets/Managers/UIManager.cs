@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject basicGunScope, sniperScope; //Scopes
     private ParticleSystem basicGunParticles, sniperGunParticles;
 
+    [SerializeField] private TextMeshProUGUI instructionsText;
     [SerializeField] private TextMeshProUGUI pistolGunText;
     [SerializeField] private TextMeshProUGUI sniperGunText;
     [SerializeField] private TextMeshProUGUI laserGunText;
@@ -41,6 +42,9 @@ public class UIManager : MonoBehaviour
         gameoverUI.SetActive(false);
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
         sniperGunParticles = sniperGunParticleEmitter.GetComponent<ParticleSystem>();
+
+        instructionsText.text = "Defeat enemies before they reach the blue zone!";
+        StartCoroutine(switchOffInstructions());
     }
 
     // Update is called once per frame
@@ -112,5 +116,16 @@ public class UIManager : MonoBehaviour
     public void restartGame()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    IEnumerator switchOffInstructions(){
+        yield return new WaitForSeconds(5.0f);
+        instructionsText.enabled = false;
+    }
+
+    public void warnPlayerIncrease(){
+        instructionsText.text = "The zombies are getting stronger!";
+        instructionsText.enabled = true;
+        StartCoroutine(switchOffInstructions());
     }
 }

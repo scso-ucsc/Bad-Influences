@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 
     public void increaseScore(){ //Increasing score
         playerScore += 1;
+        if(playerScore == 10 || playerScore == 20 || playerScore == 30 || playerScore == 50){
+            UIManager.instance.warnPlayerIncrease();
+        }
     }
 
     public int getPlayerScore(){
