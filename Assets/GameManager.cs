@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     //Game Manager Variables
     public static GameManager instance; //Static enables it to be called anywhere
-    private bool isGameOver;
+    private bool isGameOver, playerWin;
     private int playerScore;
     private string playerWeapon;
 
@@ -24,13 +24,17 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         playerScore = 0;
+        playerWin = false;
         playerWeapon = "basic";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(playerScore == 100){
+            playerWin = true;
+            gameOver();
+        }
     }
 
     public bool returnGameOverStatus(){
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
         playerScore += 1;
         if(playerScore == 10 || playerScore == 20 || playerScore == 30 || playerScore == 50){
             UIManager.instance.warnPlayerIncrease();
+            AudioManager.instance.enemyGrowthPlay();
         }
     }
 
@@ -58,5 +63,9 @@ public class GameManager : MonoBehaviour
 
     public void setPlayerWeapon(string weapon){ //Assigning weapon variable
         playerWeapon = weapon;
+    }
+
+    public bool getPlayerWin(){
+        return playerWin;
     }
 }

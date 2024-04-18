@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     //AudioManager Variables
     public static AudioManager instance;
-    [SerializeField] private AudioSource backgroundMusicSource, weaponSwapSource;
+    [SerializeField] private AudioSource backgroundMusicSource, weaponSwapSource, enemyGrowthSource;
     [SerializeField] private AudioSource basicGunSource;
     [SerializeField] private AudioSource sniperGunSource;
     [SerializeField] private GameObject zombieAudioObject;
@@ -53,5 +53,9 @@ public class AudioManager : MonoBehaviour
             zombieAudioSource.clip = zombieHeadshotSound;
         }
         zombieAudioSource.Play();
+    }
+
+    public void enemyGrowthPlay(){
+        enemyGrowthSource.Play();
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    [SerializeField] private TextMeshProUGUI playerScoreText, totalScoreText;
+    [SerializeField] private TextMeshProUGUI playerScoreText, totalScoreText, winText, loseText;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
     [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
@@ -39,7 +39,10 @@ public class UIManager : MonoBehaviour
         basicGunScope.SetActive(true); //Scopes
         sniperScope.SetActive(false);
 
+        winText.enabled = false; //GameOver UI
+        loseText.enabled = true;
         gameoverUI.SetActive(false);
+
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
         sniperGunParticles = sniperGunParticleEmitter.GetComponent<ParticleSystem>();
 
@@ -65,6 +68,13 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance.returnGameOverStatus() == true)
         {
             totalScoreText.text = "Score: " + GameManager.instance.getPlayerScore() + "/100";
+            if(GameManager.instance.getPlayerWin() == true){
+                winText.enabled = true;
+                loseText.enabled = false;
+            } else{ //GameManager.instance.getPlayerWin() == false
+                winText.enabled = false;
+                loseText.enabled = true;
+            }
             gameoverUI.SetActive(true);
         }
 
