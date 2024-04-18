@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    [SerializeField] private TextMeshProUGUI playerScoreText;
+    [SerializeField] private TextMeshProUGUI playerScoreText, totalScoreText;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
     [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
     {
         playerScoreText.text = "Enemies Defeated: " + GameManager.instance.getPlayerScore().ToString() + "/100"; //Updating score constantly
 
-        if(Input.GetMouseButtonDown(0)){ //Activate particles if mouse is pressed
+        if(Input.GetMouseButtonDown(0) && GameManager.instance.returnGameOverStatus() == false){ //Activate particles if mouse is pressed
             if(GameManager.instance.getPlayerWeapon() == "basic"){
                 basicGunParticles.Play(); //Playing Particle Burst
                 AudioManager.instance.basicGunPlay();
@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
 
         if (GameManager.instance.returnGameOverStatus() == true)
         {
+            totalScoreText.text = "Score: " + GameManager.instance.getPlayerScore() + "/100";
             gameoverUI.SetActive(true);
         }
 
