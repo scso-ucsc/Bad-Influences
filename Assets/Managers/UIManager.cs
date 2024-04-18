@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
     [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
+    [SerializeField] private GameObject basicGunScope, sniperScope; //Scopes
     private ParticleSystem basicGunParticles, sniperGunParticles;
 
     [SerializeField] private TextMeshProUGUI pistolGunText;
@@ -28,11 +29,14 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        basicGun.SetActive(true);
+        basicGun.SetActive(true); //Active Weapon
         sniperGun.SetActive(false);
 
-        sniperGunText.enabled = false;
+        sniperGunText.enabled = false; //UI Text
         laserGunText.enabled = false;
+
+        basicGunScope.SetActive(true); //Scopes
+        sniperScope.SetActive(false);
 
         gameoverUI.SetActive(false);
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
@@ -63,8 +67,11 @@ public class UIManager : MonoBehaviour
         {
             GameManager.instance.setPlayerWeapon("basic");
             AudioManager.instance.weaponSwapPlay();
-            basicGun.SetActive(true);
+            basicGun.SetActive(true); //Weapon
             sniperGun.SetActive(false);
+
+            basicGunScope.SetActive(true); //Updating Scopes
+            sniperScope.SetActive(false);
             
             pistolGunText.enabled = true;
             sniperGunText.enabled = false;
@@ -75,6 +82,9 @@ public class UIManager : MonoBehaviour
         {
             basicGun.SetActive(false);
             sniperGun.SetActive(true);
+
+            basicGunScope.SetActive(false); //Updating Scopes
+            sniperScope.SetActive(true);
             
             GameManager.instance.setPlayerWeapon("sniper");
             AudioManager.instance.weaponSwapPlay();
@@ -87,6 +97,9 @@ public class UIManager : MonoBehaviour
         {
             basicGun.SetActive(false);
             sniperGun.SetActive(false);
+
+            basicGunScope.SetActive(false); //Updating Scopes
+            sniperScope.SetActive(false);
 
             GameManager.instance.setPlayerWeapon("laser");
             AudioManager.instance.weaponSwapPlay();
