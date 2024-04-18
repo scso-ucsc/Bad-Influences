@@ -5,8 +5,8 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     [SerializeField] private string bulletType;
-    [SerializeField] private int basicDamage = 4; // Basic damage for body shots
-    [SerializeField] private int headshotMultiplier = 3; // Multiplier for headshots
+    [SerializeField] private int basicDamage; // Basic damage for body shots
+    [SerializeField] private int headshotMultiplier; // Multiplier for headshots
 
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "Wall"){
@@ -14,10 +14,10 @@ public class BulletScript : MonoBehaviour
         } else if(collision.gameObject.tag == "Zombie"){
             ProcessHit(collision.gameObject, basicDamage); // Handle body shot
         } else if(collision.gameObject.tag == "HeadCollider"){
-        int headshotDamage = basicDamage * headshotMultiplier;
-        GameObject zombieParent = collision.gameObject.transform.parent.gameObject; // Reference to the Zombie GameObject
-        Debug.Log("Headshot detected on " + zombieParent.name + " with damage: " + headshotDamage);
-        ProcessHit(zombieParent, headshotDamage); // Apply damage to the Zombie GameObject
+            int headshotDamage = basicDamage * headshotMultiplier;
+            GameObject zombieParent = collision.gameObject.transform.parent.gameObject; // Reference to the Zombie GameObject
+            Debug.Log("Headshot detected on " + zombieParent.name + " with damage: " + headshotDamage);
+            ProcessHit(zombieParent, headshotDamage); // Apply damage to the Zombie GameObject
     }
     }
 

@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private GameObject gameoverUI;
-    [SerializeField] private GameObject basicGunParticleEmitter;
+    [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
     [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
-    private ParticleSystem basicGunParticles;
+    private ParticleSystem basicGunParticles, sniperGunParticles;
 
     [SerializeField] private TextMeshProUGUI pistolGunText;
     [SerializeField] private TextMeshProUGUI sniperGunText;
@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 
         gameoverUI.SetActive(false);
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
+        sniperGunParticles = sniperGunParticleEmitter.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -44,7 +45,13 @@ public class UIManager : MonoBehaviour
         playerScoreText.text = "Enemies Defeated: " + GameManager.instance.getPlayerScore().ToString() + "/100"; //Updating score constantly
 
         if(Input.GetMouseButtonDown(0)){ //Activate particles if mouse is pressed
-            basicGunParticles.Play(); //Playing Particle Burst
+            if(GameManager.instance.getPlayerWeapon() == "basic"){
+                basicGunParticles.Play(); //Playing Particle Burst
+                AudioManager.instance.basicGunPlay();
+            } else if(GameManager.instance.getPlayerWeapon() == "sniper"){
+                sniperGunParticles.Play();
+                AudioManager.instance.sniperGunPlay();
+            }
         }
 
         if (GameManager.instance.returnGameOverStatus() == true)
@@ -55,6 +62,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             GameManager.instance.setPlayerWeapon("basic");
+            AudioManager.instance.weaponSwapPlay();
             basicGun.SetActive(true);
             sniperGun.SetActive(false);
             
@@ -69,6 +77,7 @@ public class UIManager : MonoBehaviour
             sniperGun.SetActive(true);
             
             GameManager.instance.setPlayerWeapon("sniper");
+            AudioManager.instance.weaponSwapPlay();
             sniperGunText.enabled = true;
             pistolGunText.enabled = false;
             laserGunText.enabled = false;
@@ -80,6 +89,7 @@ public class UIManager : MonoBehaviour
             sniperGun.SetActive(false);
 
             GameManager.instance.setPlayerWeapon("laser");
+            AudioManager.instance.weaponSwapPlay();
             sniperGunText.enabled = false;
             pistolGunText.enabled = false;
             laserGunText.enabled = true;
