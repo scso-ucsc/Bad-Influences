@@ -12,8 +12,10 @@ public class BulletScript : MonoBehaviour
         if(collision.gameObject.tag == "Wall"){
             DisableBullet();
         } else if(collision.gameObject.tag == "Zombie"){
+            AudioManager.instance.zombieHitPlay(this.gameObject.transform.position, "body"); //Processing Audio
             ProcessHit(collision.gameObject, basicDamage); // Handle body shot
         } else if(collision.gameObject.tag == "HeadCollider"){
+            AudioManager.instance.zombieHitPlay(this.gameObject.transform.position, "head");
             int headshotDamage = basicDamage * headshotMultiplier;
             GameObject zombieParent = collision.gameObject.transform.parent.gameObject; // Reference to the Zombie GameObject
             Debug.Log("Headshot detected on " + zombieParent.name + " with damage: " + headshotDamage);
