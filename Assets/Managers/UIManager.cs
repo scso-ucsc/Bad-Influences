@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
             basicGunScope.SetActive(false); //Updating Scopes
             sniperScope.SetActive(false);
 
-            GameManager.instance.setPlayerWeapon("laser");
+            GameManager.instance.setPlayerWeapon("auto");
             AudioManager.instance.weaponSwapPlay();
             sniperGunText.enabled = false;
             pistolGunText.enabled = false;
