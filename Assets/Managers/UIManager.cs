@@ -9,15 +9,15 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [SerializeField] private TextMeshProUGUI playerScoreText, totalScoreText, winText, loseText;
     [SerializeField] private GameObject gameoverUI;
-    [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
+    [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter, autoGunParticleEmitter;
     [SerializeField] private GameObject basicGun, sniperGun, autoGun; //Gun GameObjects
-    [SerializeField] private GameObject basicGunScope, sniperScope; //Scopes
-    private ParticleSystem basicGunParticles, sniperGunParticles;
+    [SerializeField] private GameObject basicGunScope, sniperScope, autoScope; //Scopes
+    private ParticleSystem basicGunParticles, sniperGunParticles, autoGunParticles;
 
     [SerializeField] private TextMeshProUGUI instructionsText;
     [SerializeField] private TextMeshProUGUI pistolGunText;
     [SerializeField] private TextMeshProUGUI sniperGunText;
-    [SerializeField] private TextMeshProUGUI laserGunText;
+    [SerializeField] private TextMeshProUGUI autoGunText;
 
     void Awake(){
         if(instance == null){
@@ -35,10 +35,11 @@ public class UIManager : MonoBehaviour
         autoGun.SetActive(false);
 
         sniperGunText.enabled = false; //UI Text
-        laserGunText.enabled = false;
+        autoGunText.enabled = false;
 
         basicGunScope.SetActive(true); //Scopes
         sniperScope.SetActive(false);
+        autoScope.SetActive(false);
 
         winText.enabled = false; //GameOver UI
         loseText.enabled = true;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
 
         basicGunParticles = basicGunParticleEmitter.GetComponent<ParticleSystem>(); //Accessing Particle System of GameObject
         sniperGunParticles = sniperGunParticleEmitter.GetComponent<ParticleSystem>();
+        autoGunParticles = autoGunParticleEmitter.GetComponent<ParticleSystem>();
 
         instructionsText.text = "Defeat enemies before they reach the blue zone!";
         StartCoroutine(switchOffInstructions());
@@ -63,7 +65,11 @@ public class UIManager : MonoBehaviour
             } else if(GameManager.instance.getPlayerWeapon() == "sniper"){
                 sniperGunParticles.Play();
                 AudioManager.instance.sniperGunPlay();
-            }
+            } //Auto Gun variables called in PlayerManager
+            // else{ //GameManager.instance.getPlayerWeapon() == "auto"
+            //     autoGunParticles.Play();
+            //     AudioManager.instance.autoGunPlay();
+            // }
         }
 
         if (GameManager.instance.returnGameOverStatus() == true)
@@ -89,10 +95,11 @@ public class UIManager : MonoBehaviour
 
             basicGunScope.SetActive(true); //Updating Scopes
             sniperScope.SetActive(false);
+            autoScope.SetActive(false);
             
             pistolGunText.enabled = true;
             sniperGunText.enabled = false;
-            laserGunText.enabled  = false;
+            autoGunText.enabled  = false;
         }
 
         if (Input.GetKeyDown("2"))
@@ -103,12 +110,13 @@ public class UIManager : MonoBehaviour
 
             basicGunScope.SetActive(false); //Updating Scopes
             sniperScope.SetActive(true);
+            autoScope.SetActive(false);
             
             GameManager.instance.setPlayerWeapon("sniper");
             AudioManager.instance.weaponSwapPlay();
             sniperGunText.enabled = true;
             pistolGunText.enabled = false;
-            laserGunText.enabled = false;
+            autoGunText.enabled = false;
         }
 
         if(Input.GetKeyDown("3"))
@@ -119,12 +127,13 @@ public class UIManager : MonoBehaviour
 
             basicGunScope.SetActive(false); //Updating Scopes
             sniperScope.SetActive(false);
+            autoScope.SetActive(true);
 
             GameManager.instance.setPlayerWeapon("auto");
             AudioManager.instance.weaponSwapPlay();
             sniperGunText.enabled = false;
             pistolGunText.enabled = false;
-            laserGunText.enabled = true;
+            autoGunText.enabled = true;
         }
     }
 
@@ -142,5 +151,9 @@ public class UIManager : MonoBehaviour
         instructionsText.text = "The zombies are getting stronger!";
         instructionsText.enabled = true;
         StartCoroutine(switchOffInstructions());
+    }
+
+    public void autoGunParticlesPlay(){
+        autoGunParticles.Play();
     }
 }

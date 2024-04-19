@@ -72,6 +72,8 @@ public class PlayerManager : MonoBehaviour
         while (isFiring)
         {
             AmmoManager.instance.Fire(); // Call the Fire method from AmmoManager
+            AudioManager.instance.autoGunPlay(); //Playing audio and particles
+            UIManager.instance.autoGunParticlesPlay();
             yield return new WaitForSeconds(0.1f); // Adjust the delay between each shot as needed
         }
     }
