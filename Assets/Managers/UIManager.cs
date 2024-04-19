@@ -49,14 +49,14 @@ public class UIManager : MonoBehaviour
         sniperGunParticles = sniperGunParticleEmitter.GetComponent<ParticleSystem>();
         autoGunParticles = autoGunParticleEmitter.GetComponent<ParticleSystem>();
 
-        instructionsText.text = "Defeat enemies before they reach the blue zone!";
+        instructionsText.text = "Defeat zombies before they reach the blue zone!";
         StartCoroutine(switchOffInstructions());
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerScoreText.text = "Enemies Defeated: " + GameManager.instance.getPlayerScore().ToString() + "/100"; //Updating score constantly
+        playerScoreText.text = "Zombies Defeated: " + GameManager.instance.getPlayerScore().ToString() + "/100"; //Updating score constantly
 
         if(Input.GetMouseButtonDown(0) && GameManager.instance.returnGameOverStatus() == false){ //Activate particles if mouse is pressed
             if(GameManager.instance.getPlayerWeapon() == "basic"){
