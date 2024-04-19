@@ -8,9 +8,10 @@ public class AmmoManager : MonoBehaviour
     public static AmmoManager instance;
     private List<GameObject> basicBulletList = new List<GameObject>();
     private List<GameObject> sniperBulletList = new List<GameObject>();
-    [SerializeField] private GameObject basicBulletObj, sniperBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
-    [SerializeField] private Transform basicBulletParent, sniperBulletParent;
-    [SerializeField] private float basicFireSpeed = 1500, sniperFireSpeed = 2000;
+    private List<GameObject> autoBulletList = new List<GameObject>();
+    [SerializeField] private GameObject basicBulletObj, sniperBulletObj, autoBulletObj; //[SerializeField] lets the variable be accessible to Unity editor, but not public to the rest
+    [SerializeField] private Transform basicBulletParent, sniperBulletParent, autoBulletParent;
+    [SerializeField] private float basicFireSpeed = 1500, sniperFireSpeed = 2000, autoFireSpeed = 1800;
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private Transform playerPosition;
 
@@ -39,6 +40,13 @@ public class AmmoManager : MonoBehaviour
             sniperBullet.SetActive(false);
             sniperBulletList.Add(sniperBullet);
         }
+
+        for(int i = 0; i < 20; i++){ 
+            Vector3 spawnPoint = new Vector3(0, 0, 0);
+            GameObject autoBullet = Instantiate(autoBulletObj, spawnPoint, Quaternion.Euler(90, 0, 0), autoBulletParent);
+            autoBullet.SetActive(false);
+            autoBulletList.Add(autoBullet);
+        }
     }
 
     public void Fire(){ //Firing bullet function
@@ -53,6 +61,10 @@ public class AmmoManager : MonoBehaviour
         } else if(GameManager.instance.getPlayerWeapon() == "sniper"){
             chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * sniperFireSpeed);
         }
+        else if (GameManager.instance.getPlayerWeapon() == "auto")
+        {
+            chosenBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * autoFireSpeed);
+        }
     }
 
     private GameObject getBullet(){
@@ -66,6 +78,13 @@ public class AmmoManager : MonoBehaviour
             for(int i = 0; i < 20; i++){
                 if(!sniperBulletList[i].activeInHierarchy){
                     return sniperBulletList[i];
+                }
+            }
+        }
+         else if(GameManager.instance.getPlayerWeapon() == "auto"){ 
+            for(int i = 0; i < 50; i++){
+                if(!autoBulletList[i].activeInHierarchy){
+                    return autoBulletList[i];
                 }
             }
         }
