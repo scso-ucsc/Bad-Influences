@@ -41,7 +41,7 @@ public class AmmoManager : MonoBehaviour
             sniperBulletList.Add(sniperBullet);
         }
 
-        for(int i = 0; i < 20; i++){ 
+        for(int i = 0; i < 50; i++){ 
             Vector3 spawnPoint = new Vector3(0, 0, 0);
             GameObject autoBullet = Instantiate(autoBulletObj, spawnPoint, Quaternion.Euler(90, 0, 0), autoBulletParent);
             autoBullet.SetActive(false);

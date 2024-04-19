@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
         sniperScope.SetActive(false);
         autoScope.SetActive(false);
 
-        winText.enabled = false; //GameOver UI
+        winText.enabled = true; //GameOver UI
         loseText.enabled = true;
         gameoverUI.SetActive(false);
 
@@ -75,14 +75,12 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance.returnGameOverStatus() == true)
         {
             totalScoreText.text = "Score: " + GameManager.instance.getPlayerScore() + "/100";
-            if(GameManager.instance.getPlayerWin() == true){
-                winText.enabled = true;
-                loseText.enabled = false;
-            } else{ //GameManager.instance.getPlayerWin() == false
-                winText.enabled = false;
-                loseText.enabled = true;
-            }
             gameoverUI.SetActive(true);
+            if(GameManager.instance.getPlayerWin() == true){
+                loseText.enabled = false;
+            } else{
+                winText.enabled = false;
+            }
         }
 
         if (Input.GetKeyDown("1"))
