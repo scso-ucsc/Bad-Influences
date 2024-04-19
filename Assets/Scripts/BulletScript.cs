@@ -18,7 +18,6 @@ public class BulletScript : MonoBehaviour
             AudioManager.instance.zombieHitPlay(this.gameObject.transform.position, "head");
             int headshotDamage = basicDamage * headshotMultiplier;
             GameObject zombieParent = collision.gameObject.transform.parent.gameObject; // Reference to the Zombie GameObject
-            Debug.Log("Headshot detected on " + zombieParent.name + " with damage: " + headshotDamage);
             ProcessHit(zombieParent, headshotDamage); // Apply damage to the Zombie GameObject
     }
     }
@@ -29,7 +28,6 @@ public class BulletScript : MonoBehaviour
     }
 
     private void ProcessHit(GameObject zombie, int damage){
-        Debug.Log("Damage Applied: " + damage); // Debug the damage being applied
         var zombieScript = zombie.GetComponent<ZombieScript>();
         if(zombieScript != null){
             zombieScript.zombieHurt(damage);

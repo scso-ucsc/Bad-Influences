@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource backgroundMusicSource, weaponSwapSource, enemyGrowthSource;
     [SerializeField] private AudioSource basicGunSource;
     [SerializeField] private AudioSource sniperGunSource;
+    [SerializeField] private AudioSource autoGunSource;
     [SerializeField] private GameObject zombieAudioObject;
     [SerializeField] private AudioSource zombieAudioSource;
     [SerializeField] private AudioClip zombieBodyHitSound, zombieHeadshotSound;
@@ -39,6 +40,10 @@ public class AudioManager : MonoBehaviour
 
     public void sniperGunPlay(){
         sniperGunSource.Play();
+    }
+
+    public void autoGunPlay(){
+        autoGunSource.Play();
     }
 
     public void weaponSwapPlay(){
