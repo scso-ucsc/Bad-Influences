@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerScoreText, totalScoreText, winText, loseText;
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject basicGunParticleEmitter, sniperGunParticleEmitter;
-    [SerializeField] private GameObject basicGun, sniperGun; //Gun GameObjects
+    [SerializeField] private GameObject basicGun, sniperGun, autoGun; //Gun GameObjects
     [SerializeField] private GameObject basicGunScope, sniperScope; //Scopes
     private ParticleSystem basicGunParticles, sniperGunParticles;
 
@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     {
         basicGun.SetActive(true); //Active Weapon
         sniperGun.SetActive(false);
+        autoGun.SetActive(false);
 
         sniperGunText.enabled = false; //UI Text
         laserGunText.enabled = false;
@@ -84,6 +85,7 @@ public class UIManager : MonoBehaviour
             AudioManager.instance.weaponSwapPlay();
             basicGun.SetActive(true); //Weapon
             sniperGun.SetActive(false);
+            autoGun.SetActive(false);
 
             basicGunScope.SetActive(true); //Updating Scopes
             sniperScope.SetActive(false);
@@ -97,6 +99,7 @@ public class UIManager : MonoBehaviour
         {
             basicGun.SetActive(false);
             sniperGun.SetActive(true);
+            autoGun.SetActive(false);
 
             basicGunScope.SetActive(false); //Updating Scopes
             sniperScope.SetActive(true);
@@ -112,6 +115,7 @@ public class UIManager : MonoBehaviour
         {
             basicGun.SetActive(false);
             sniperGun.SetActive(false);
+            autoGun.SetActive(true);
 
             basicGunScope.SetActive(false); //Updating Scopes
             sniperScope.SetActive(false);
